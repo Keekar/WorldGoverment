@@ -1,0 +1,20 @@
+version: '3.2'
+services:
+    deluge-openvpn:
+        volumes:
+            - '/srv/Downloads:/downloads'
+            - '/docker/deluge:/config'
+        environment:
+            - OPENVPN_PROVIDER=SurfShark
+            - OPENVPN_CONFIG=uk-lon.prod.surfshark.com
+            - OPENVPN_USERNAME=K86T6GCB2Crkyeye8Vy4YgVu
+            - OPENVPN_PASSWORD=wWb9gBFsJRtQmCmEZaDSAT3D
+            - OPENVPN_PASSWORD=wWb9gBFsJRtQmCmEZaDSAT3D
+            - LOCAL_NETWORK=192.168.0.0/24
+        cap_add:
+            - NET_ADMIN
+        sysctls:
+            - net.ipv6.conf.all.disable_ipv6=1
+        ports:
+            - '8112:8112'
+        image: ebrianne/docker-deluge-openvpn
